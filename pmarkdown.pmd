@@ -69,4 +69,4 @@ list(("another", "hemgurung", "sabina"))
 dict(ano = "another", hem="hemgurung", sab="sabina")
 my_list = ["another", "sabina"]
 my_list[0]
-# just a new commit
+ just a new commit
