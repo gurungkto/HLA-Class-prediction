@@ -1,5 +1,5 @@
 # HLA-Class-prediction
-This is an r script to predict HLA class of peptides (i.e.Class I or Class II)
+This is an r script to predict HLA class of peptides (i.e.Class I or   Class II)
 ---
 title: "HLA Class prediction"
 author: "Hem R. Gurung, Ph.D."
