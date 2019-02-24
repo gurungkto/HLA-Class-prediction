@@ -15,7 +15,7 @@ setwd("/Users/hem/Desktop/myfolder")
 # read the dataset
 dataset <- read.csv("all_pep_final.csv", header = T)
 
-# Check dimension
+# Check dimension of the dataset
 dim(dataset)
 
 # Check column names
@@ -31,7 +31,7 @@ dataset <- dataset[, !names(dataset) %in% drop]
 
 # Check if there is any NA in the dataset 
 sapply(dataset, function(x) sum(is.na(x)))
-head(dataset)
+head(dataset) # No NAs in the dataset
 
 # Rename Class I as 1 and class II as 0
 dataset$HLA_Class <- ifelse(dataset$HLA_Class == "Class I", 1, 0)
@@ -70,7 +70,7 @@ summary(model)
 # Run anova to analyze the table of deviance
 anova(model, test = "Chisq")
 
-# assess the predictive ability of the model
+# assess the predictive ability of the model 
 fitted.results <- predict(model, newdata = validate, type = "response")
 fitted.results <- ifelse(fitted.results >0.5, 1, 0)
 misClassificationError <- mean(fitted.results != validate$HLA_Class)
