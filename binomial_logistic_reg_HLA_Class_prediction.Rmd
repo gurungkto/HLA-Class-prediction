@@ -1,7 +1,7 @@
 ---
 title: "HLA Class prediction"
 author: "Hem R. Gurung, Ph.D."
-output: pdf_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #### This project builds a simple binomial logistic regression model to predict whether a given peptide belongs to class I or class II based on its mass, length, m/z, and retention time values.
 ```{r}
-setwd("C:/Users/HGURUNG1/Desktop/files")
+setwd("/Users/hem/Desktop/myfolder")
 
 # read the dataset
 dataset <- read.csv("all_pep_final.csv", header = T)
