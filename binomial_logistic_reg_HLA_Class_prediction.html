@@ -375,6 +375,7 @@ $(document).ready(function () {
 </div>
 
 
+<p>knit: (function(input_file, encoding) { out_dir &lt;- ‘docs’; rmarkdown::render(input_file, encoding=encoding, output_file=file.path(dirname(input_file), out_dir, ‘index.html’))})</p>
 <div id="this-project-builds-a-simple-binomial-logistic-regression-model-to-predict-whether-a-given-peptide-belongs-to-class-i-or-class-ii-based-on-its-mass-length-mz-and-retention-time-values." class="section level4">
 <h4>This project builds a simple binomial logistic regression model to predict whether a given peptide belongs to class I or class II based on its mass, length, m/z, and retention time values.</h4>
 <pre class="r"><code>setwd(&quot;/Users/hem/Desktop/myfolder&quot;)
@@ -382,7 +383,7 @@ $(document).ready(function () {
 # read the dataset
 dataset &lt;- read.csv(&quot;all_pep_final.csv&quot;, header = T)
 
-# Check dimension
+# Check dimension of the dataset
 dim(dataset)</code></pre>
 <pre><code>## [1] 5856   14</code></pre>
 <pre class="r"><code># Check column names
@@ -428,7 +429,7 @@ dataset &lt;- dataset[, !names(dataset) %in% drop]
 sapply(dataset, function(x) sum(is.na(x)))</code></pre>
 <pre><code>##      Mass    Length       m.z        RT HLA_Class 
 ##         0         0         0         0         0</code></pre>
-<pre class="r"><code>head(dataset)</code></pre>
+<pre class="r"><code>head(dataset) # No NAs in the dataset</code></pre>
 <pre><code>##       Mass Length      m.z    RT HLA_Class
 ## 1 1611.728     16 806.8690 34.57  Class II
 ## 2 1800.842     15 601.2880 40.02  Class II
@@ -516,7 +517,7 @@ anova(model, test = &quot;Chisq&quot;)</code></pre>
 ## RT      1    16.14      2943     2241.3 5.898e-05 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<pre class="r"><code># assess the predictive ability of the model
+<pre class="r"><code># assess the predictive ability of the model 
 fitted.results &lt;- predict(model, newdata = validate, type = &quot;response&quot;)
 fitted.results &lt;- ifelse(fitted.results &gt;0.5, 1, 0)
 misClassificationError &lt;- mean(fitted.results != validate$HLA_Class)
